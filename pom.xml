@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wm.automation</groupId>
+    <artifactId>wm-automation-framework</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>WM Automation Framework</name>
+    <description>BDD Cucumber + Selenium + Rest Assured Automation Framework for WM.com</description>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Core versions -->
+        <selenium.version>4.15.0</selenium.version>
+        <webdrivermanager.version>5.6.3</webdrivermanager.version>
+        <cucumber.version>7.15.0</cucumber.version>
+        <testng.version>7.8.0</testng.version>
+        <rest-assured.version>5.4.0</rest-assured.version>
+        <jackson.version>2.16.1</jackson.version>
+        <log4j2.version>2.22.1</log4j2.version>
+        <extentreports.version>5.1.1</extentreports.version>
+        <assertj.version>3.24.2</assertj.version>
+        <poi.version>5.2.5</poi.version>
+
+        <!-- Maven plugin versions -->
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
+
+        <!-- Default runtime properties (override via -Dbrowser=firefox etc.) -->
+        <browser>chrome</browser>
+        <headless>false</headless>
+        <env>qa</env>
+        <cucumber.filter.tags></cucumber.filter.tags>
+    </properties>
+
+    <dependencies>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Selenium                                                       -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <!-- WebDriverManager – automatic driver binary management -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Cucumber                                                       -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <!-- PicoContainer for step-definition dependency injection -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  TestNG                                                         -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Rest Assured                                                   -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Jackson                                                        -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Log4j2                                                         -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <!-- Bridge so anything using SLF4J routes through Log4j2 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Extent Reports                                                 -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Assertions                                                     -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+        </dependency>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!--  Apache POI (Excel utilities)                                   -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <!-- Tell Maven where test sources live -->
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+
+        <plugins>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <release>17</release>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Surefire Plugin – runs TestNG via testng.xml -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <browser>${browser}</browser>
+                        <headless>${headless}</headless>
+                        <env>${env}</env>
+                        <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
+                    </systemPropertyVariables>
+                    <!-- Forward any -D properties the user sets on the command line -->
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

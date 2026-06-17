@@ -1,0 +1,19 @@
+{
+  "validZipCode": "77002",
+  "invalidZipCode": "00000",
+  "validServicePayload": {
+    "title": "Service Request - Residential Pickup",
+    "body": "Customer requesting residential waste pickup at 1001 Fannin St, Houston TX 77002",
+    "userId": 1
+  },
+  "invalidServicePayload": {
+    "title": "",
+    "body": null,
+    "userId": -1
+  },
+  "serviceAvailabilityRequest": {
+    "zipCode": "77002",
+    "serviceType": "RESIDENTIAL",
+    "frequency": "WEEKLY"
+  }
+}

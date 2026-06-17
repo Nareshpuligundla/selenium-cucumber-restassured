@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <Properties>
+        <Property name="LOG_DIR">target/logs</Property>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console appender -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- Rolling file appender -->
+        <RollingFile name="FileAppender"
+                     fileName="${LOG_DIR}/wm-automation.log"
+                     filePattern="${LOG_DIR}/wm-automation-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- Framework loggers -->
+        <Logger name="com.wm.automation" level="INFO" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- Rest Assured -->
+        <Logger name="io.restassured" level="WARN" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+
+        <!-- Selenium -->
+        <Logger name="org.openqa.selenium" level="WARN" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+
+        <!-- WebDriverManager -->
+        <Logger name="io.github.bonigarcia" level="WARN" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+
+        <Root level="WARN">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

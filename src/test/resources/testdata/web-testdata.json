@@ -1,0 +1,12 @@
+{
+  "validAddress": "1001 Fannin St, Houston, TX 77002",
+  "invalidAddress": "!@#$%^InvalidAddressXYZ123",
+  "searchKeyword": "recycling services",
+  "serviceType": "Residential",
+  "customerName": "John Doe",
+  "phoneNumber": "(713) 555-0100",
+  "email": "testuser@example.com",
+  "zipCode": "77002",
+  "city": "Houston",
+  "state": "TX"
+}

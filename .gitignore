@@ -1,0 +1,29 @@
+# Maven build output
+target/
+!target/.gitkeep
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+.settings/
+.factorypath
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+logs/
+
+# Test artifacts
+test-output/
+allure-results/
+allure-report/
+screenshots/
+
+# Driver binaries managed by WebDriverManager
+.cache/
