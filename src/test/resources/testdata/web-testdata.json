@@ -8,5 +8,41 @@
   "email": "testuser@example.com",
   "zipCode": "77002",
   "city": "Houston",
-  "state": "TX"
+  "state": "TX",
+  "worktop": {
+    "users": {
+      "user1": { "identifier": "qa.user1@example.com", "password": "OldPassw0rd!23" },
+      "clientB": { "identifier": "qa.clientb@example.com", "password": "ClientBPassw0rd!42", "client": "Client B" },
+      "noClient": { "identifier": "qa.noclient@example.com", "password": "NoClientPassw0rd!1" },
+      "multi": { "identifier": "qa.multi@example.com", "password": "MultiPassw0rd!1" },
+      "lock": { "identifier": "qa.lock@example.com", "password": "LockPassw0rd!11", "wrongPassword": "BadPassw0rd!0", "newPassword": "N3w!LongPassphrase#77" },
+      "customer1": { "identifier": "customer1@example.com", "password": "CustPassw0rd!55" },
+      "unknown": { "identifier": "unknown.user@example.com", "password": "AnyPassw0rd!1" }
+    },
+    "passwords": {
+      "wrong": "WrongPassw0rd!1",
+      "compliant2024": "Str0ng!Passphrase#2024",
+      "compliant2025": "Str0ng!Passphrase#2025",
+      "tooShort7": "Short1!",
+      "tooShort11": "Short1!abcd",
+      "tooLong129": "Aa1!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "noUppercase": "alllowercase123!",
+      "previous": "PrevPassw0rd!99"
+    },
+    "cards": {
+      "valid": { "number": "4111 1111 1111 1111", "expiry": "12/30", "cvv": "123", "threeDSecurePassword": "Challenge123" },
+      "invalidLuhn": { "number": "4111 1111 1111 1112", "expiry": "01/20", "cvv": "12" },
+      "declined": "4000 0000 0000 0002",
+      "insufficientFunds": "4000 0000 0000 9995",
+      "timeout": "4000 0000 0000 0044"
+    },
+    "uploadFiles": {
+      "invalid": "invalid.exe",
+      "large": "large.pdf",
+      "empty": "empty.pdf",
+      "valid": "valid.pdf",
+      "malware": "eicar-test.pdf",
+      "record": "REC-1001"
+    }
+  }
 }
